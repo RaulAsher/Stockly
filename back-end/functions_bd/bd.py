@@ -4,7 +4,7 @@ import importlib.util
 import sys
 
 
-from flask import Flask, render_tempalte, redirect, session, url_for, jsonify, request
+from flask import Flask, render_template, redirect, session, url_for, jsonify, request
 import mysql.connector
 
 app = Flask(__name__)

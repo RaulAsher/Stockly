@@ -1,6 +1,8 @@
 from pathlib import Path
 import importlib.util
 import sys
+from flask import Flask, app, render_template, redirect, session, url_for, jsonify, request
+import mysql.connector
 
 # Importa bd.py da pasta functions_bd
 base_dir = Path(__file__).resolve().parent
@@ -14,3 +16,14 @@ _spec.loader.exec_module(bd)
 # Agora você pode usar bd.app ou bd.get_data() se precisar
 if __name__ == "__main__":
     bd.app.run(host="localhost", port=5000, debug=True)
+
+app = Flask(__name__)
+
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    # Sample data to return
+    data = {
+        'message': 'Hello, World!',
+        'status': 'success'
+    }
+    return jsonify(data)
